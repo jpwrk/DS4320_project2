@@ -1,3 +1,5 @@
 load_data.log
 .env
 venv/
+pipeline.log
+confusion_matrix.png

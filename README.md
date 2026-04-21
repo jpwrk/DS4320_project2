@@ -1,16 +1,16 @@
 # DS 4320 Project 2: Detecting AI Generated Amazon Product Reviews
 
-Executive Summary:
+Executive Summary: This repository contains tackles the growing problem of AI-generated fake product reviews on platforms like Amazon. Using a dataset of 40,000 labeled reviews from Kaggle (with no class imbalance), the data was loaded into a MongoDB Atlas document database and used to train a machine learning model that detects fake reviews based on patterns in the review text. The model achieves around 89% accuracy, correctly identifying the majority of both fake and real reviews. The repository includes all code for loading and querying the database, the full analysis and visualization pipeline, a press release explaining the findings for a general audience, background readings on AI text detection, and complete metadata documentation for the dataset. All code is written in Python and organized as a GitHub repository with proper error handling and logging throughout.
 
-Name:
+Name: Jia Park
 
-NetID:
+NetID: cqb3tc
 
 DOI:
 
 Press Release: https://myuva-my.sharepoint.com/:t:/g/personal/cqb3tc_virginia_edu/IQDlY9Na6WWwSrwoMR1eTHWuAWzJHlphDbIilZiiC27-g7c?e=f4Re2W
 
-Pipeline:
+Pipeline: 
 
 License:
 
@@ -81,12 +81,12 @@ The artificial 50/50 class balance should be clearly acknowledged when interpret
 ## Metadata
 
 Guidelines:
-- Every document must contain all four fields — category, rating, label, and text
-- label must be exactly "OR" (Original/human) or "CG" (Computer-Generated/fake) — no other values are valid
-- rating must be an integer between 1 and 5 inclusive — decimal ratings are not valid
-- text must be a non-empty string — blank review text should be dropped during loading
-- category must be one of the 10 Amazon product categories present in the dataset
-- No nested documents or arrays are used — all fields are flat key-value pairs
+- Every document must contain all four fields (category, rating, label, and text)
+- Label must be exactly "OR" (Original/human) or "CG" (Computer-Generated/fake)
+- Rating must be an integer between 1 and 5 (no decimal ratings)
+- Text must be a non-empty string (blank review text was dropped during loading)
+- Category must be one of the 10 Amazon product categories present in the dataset
+- No nested documents or arrays should be used
 
 
 | Property | Value |
