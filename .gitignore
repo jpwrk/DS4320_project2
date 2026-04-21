@@ -3,3 +3,4 @@ load_data.log
 venv/
 pipeline.log
 confusion_matrix.png
+"fake reviews dataset.csv"
