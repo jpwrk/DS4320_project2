@@ -6,13 +6,14 @@ Name: Jia Park
 
 NetID: cqb3tc
 
-DOI:
+DOI: <img width="191" height="20" alt="image" src="https://github.com/user-attachments/assets/df59ecf4-dd41-4cb6-811d-6f2b1c4b5b53" />
+
 
 Press Release: https://myuva-my.sharepoint.com/:t:/g/personal/cqb3tc_virginia_edu/IQDlY9Na6WWwSrwoMR1eTHWuAWzJHlphDbIilZiiC27-g7c?e=f4Re2W
 
-Pipeline: 
+Pipeline: https://github.com/jpwrk/DS4320_project2/blob/main/pipeline.ipynb
 
-License:
+License: https://github.com/jpwrk/DS4320_project2/blob/main/LICENSE
 
 ## Problem Definition
 
@@ -20,11 +21,11 @@ General Problem: Detecting AI-generated text
 
 Specific Problem: Detecting AI-generated fake product reviews on e-commerce platforms to help consumers and platforms identify inauthentic content and make more trustworthy purchasing decisions.
 
-Online product reviews are one of the most influential factors in purchasing decisions. However, the rise of large language models has made it easy to generate hundreds of convincing fake reviews at scale to manipulate consumers. This can cause consumers to waste money on faulty products, and therefore trust in online platforms erodes. Building a system that can reliably detect AI-generated reviews is therefore both a consumer protection issue and a platform integrity issue.
+Motivation: Online product reviews are one of the most influential factors in purchasing decisions. However, the rise of large language models has made it easy to generate hundreds of convincing fake reviews at scale to manipulate consumers. This can cause consumers to waste money on faulty products, and therefore trust in online platforms erodes. Building a system that can reliably detect AI-generated reviews is therefore both a consumer protection issue and a platform integrity issue.
 
-The general problem of detecting AI-generated text is broad and applies to many domains including academic essays, news articles, and social media posts. We refined our focus to product reviews specifically because they represent a high-stakes, high-volume, and commercially motivated use case where fake content is already known to be widespread and have a large impact. Product reviews also have a natural document structure as each review typically contains metadata like rating, date, product category, and review text, which makes it an ideal fit for the document model in MongoDB!
+Rationale: The general problem of detecting AI-generated text is broad and applies to many domains including academic essays, news articles, and social media posts. We refined our focus to product reviews specifically because they represent a high-stakes, high-volume, and commercially motivated use case where fake content is already known to be widespread and have a large impact. Product reviews also have a natural document structure as each review typically contains metadata like rating, date, product category, and review text, which makes it an ideal fit for the document model in MongoDB!
 
-AI is Flooding Shopping Sites with Fake Reviews! {LINK}
+Press release: AI is Flooding Shopping Sites with Fake Reviews! [Link](https://myuva-my.sharepoint.com/:t:/g/personal/cqb3tc_virginia_edu/IQDlY9Na6WWwSrwoMR1eTHWuAWzJHlphDbIilZiiC27-g7c?e=4yTGcZ)
 
 ## Domain Exposition
 
@@ -63,7 +64,7 @@ Background Readings: https://myuva-my.sharepoint.com/:f:/g/personal/cqb3tc_virgi
 
 ## Data Creation
 
-The dataset used in this project is the "Fake Reviews Dataset" published on Kaggle by the user mexwell, sourced from a 2022 research study by Sasikanth et al. The dataset was derived from Amazon Review Data (2018), a large publicly available collection of real product reviews scraped from Amazon across multiple categories. The fake (computer-generated) reviews were synthetically generated to mimic authentic reviews, then labeled accordingly. The dataset contains 40,000 total reviews — 20,000 labeled as OR (Original/human-written) and 20,000 labeled as CG (Computer-Generated/fake), making it a balanced binary classification dataset. It covers the top 10 Amazon product categories to ensure broad representativeness across consumer goods.
+The dataset used in this project is the "Fake Reviews Dataset" published on Kaggle by the user mexwell, sourced from a 2022 research study by Sasikanth et al. The dataset was derived from Amazon Review Data (2018), a large publicly available collection of real product reviews scraped from Amazon across multiple categories. The fake (computer-generated) reviews were synthetically generated to mimic authentic reviews, then labeled accordingly. The dataset contains 40,000 total reviews: 20,000 labeled as OR (Original/human-written) and 20,000 labeled as CG (Computer-Generated/fake), making it a balanced binary classification dataset. It covers the top 10 Amazon product categories to ensure broad representativeness across consumer goods.
 The data was downloaded directly from Kaggle at https://www.kaggle.com/datasets/mexwell/fake-reviews-dataset and loaded into MongoDB Atlas as a document database for this project. Each row in the original CSV file was converted into a MongoDB document using Python and pymongo, with each document representing a single product review. No additional scraping, cleaning beyond null removal, or augmentation was performed on the data. The dataset was already sanitized for public research use by its original creators, making it appropriate for academic analysis without additional ethical review.
 
 
@@ -80,7 +81,7 @@ The artificial 50/50 class balance should be clearly acknowledged when interpret
 
 ## Metadata
 
-Guidelines:
+Implicit Schema:
 - Every document must contain all four fields (category, rating, label, and text)
 - Label must be exactly "OR" (Original/human) or "CG" (Computer-Generated/fake)
 - Rating must be an integer between 1 and 5 (no decimal ratings)
@@ -110,7 +111,7 @@ Guidelines:
 | category | String | The Amazon product category the review belongs to | "Home_and_Kitchen" |
 | rating | Integer | Star rating given by the reviewer on a scale of 1 to 5 | 5 |
 | label | String | Classification of the review — OR for human-written, CG for computer-generated | "CG" |
-| text | String | The full text body of the product review | "This blender works great and is very easy to clean!" |
+| text_ | String | The full text body of the product review | "This blender works great and is very easy to clean!" |
 
 
 | Metric | Value |
