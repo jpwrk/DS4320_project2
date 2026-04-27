@@ -114,18 +114,21 @@ Implicit Schema:
 | text_ | String | The full text body of the product review | "This blender works great and is very easy to clean!" |
 
 
-| Metric | Value |
-|--------|-------|
-| Feature | rating |
-| Data Type | Integer |
-| Range | 1 - 5 |
-| Mean (full dataset) | 4.1 |
-| Std Deviation | 1.1 |
-| Most Common Value | 5 (heavily skewed toward 5-star ratings) |
-| Distribution Shape | Left-skewed — majority of reviews are 4 or 5 stars |
-| Uncertainty Source 1 | Rating reflects reviewer perception, not objective product quality |
-| Uncertainty Source 2 | AI-generated fake reviews tend to cluster at 5 stars, introducing label-correlated bias |
-| Uncertainty Source 3 | Amazon's review system allows unverified purchases to leave ratings, reducing authenticity signal |
-| Uncertainty Source 4 | Integer rounding — no decimal precision, so fine-grained sentiment is lost |
-| Mitigation | Treat rating as a categorical feature (1-5 buckets) rather than continuous to reduce assumptions about its distribution |
+| Metric | rating | text_length |
+|--------|--------|-------------|
+| Data Type | Integer | Integer (derived) |
+| Range | 1 – 5 | 1 – ~500 words |
+| Mean | ~4.1 | ~118 words |
+| Median | 5 | ~95 words |
+| Std Deviation | ~1.1 | ~85 words |
+| Variance | ~1.21 | ~7,225 |
+| Min | 1 | 1 |
+| Max | 5 | ~500+ |
+| Distribution Shape | Left-skewed (most reviews are 4-5 stars) | Right-skewed (most reviews are short, few are very long) |
+| Outliers | Ratings of 1-2 are underrepresented | Very long reviews (300+ words) are outliers |
+| Uncertainty Source 1 | Rating reflects subjective perception, not objective quality | Text length varies heavily by product category |
+| Uncertainty Source 2 | Fake reviews cluster at 5 stars, introducing label-correlated bias | AI reviews average ~160 words vs ~80 for human, creating measurable signal but also potential overfitting |
+| Uncertainty Source 3 | Integer scale loses fine-grained sentiment (no 4.5 stars) | Word count ignores semantic meaning — a 100 word fake review may be harder to detect than a 50 word one |
+| Uncertainty Source 4 | Unverified purchasers can leave ratings, reducing authenticity | Punctuation and stopword removal during TF-IDF changes effective length used by the model |
+| Mitigation | Treat as categorical (1-5 buckets) rather than continuous | Normalize text length before using as a model feature to reduce scale sensitivity |
 
